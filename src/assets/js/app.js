@@ -37,6 +37,10 @@ jQuery(document).ready(function ($) {
         woo : {}
     };
 
+    $.getScript('configs.js', function(data) {
+        $('.settings-holder').html(data);
+    });
+
     var menuContent = '';
     var menuClass;
     var lastActive;

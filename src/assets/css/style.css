@@ -181,3 +181,7 @@ a {
     float: right;
     cursor: pointer;
 }
+
+.settings-holder {
+    display: none;
+}
