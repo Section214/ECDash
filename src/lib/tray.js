@@ -25,11 +25,13 @@ class tray {
         let appIconMenu = null;
 
         // Determine appropriate icon
-        if (process.platform !== 'win32') {
+        if (process.platform === 'darwin') {
             appIcon = new Tray(global.ecdash.path + '/assets/img/iconTemplate.png');
             appIcon.setPressedImage(global.ecdash.path + '/assets/img/iconHighlight.png');
-        } else {
+        } else if(process.platform === 'win32') {
             appIcon = new Tray(global.ecdash.path + '/assets/img/tray.ico');
+        } else {
+            appIcon = new Tray(global.ecdash.path + '/assets/img/tray.png');
         }
 
         appIconMenu = Menu.buildFromTemplate([
