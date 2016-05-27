@@ -82,7 +82,7 @@ jQuery(document).ready(function ($) {
                     activeItem++;
                 }
 
-                if(activeItem < 1) {
+                if(activeItem < 0) {
                     activeItem = totalItems;
                 } else if(activeItem >= totalItems) {
                     activeItem = 0;
