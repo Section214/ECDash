@@ -23,6 +23,24 @@ class menu {
                         label:       'Minimize',
                         accelerator: 'CmdOrCtrl+M',
                         role:        'minimize'
+                    },
+                    {
+                        type: 'separator'
+                    },
+                    {
+                        label:       'Toggle Developer Tools',
+                        accelerator: (function() {
+                            if (process.platform === 'darwin') {
+                                return 'Alt+Command+I';
+                            } else {
+                                return 'Ctrl+Shift+I';
+                            }
+                        })(),
+                        click: function(item, focusedWindow) {
+                            if (focusedWindow) {
+                                focusedWindow.webContents.toggleDevTools();
+                            }
+                        }
                     }
                 ]
             },
@@ -96,21 +114,6 @@ class menu {
                 {
                     label: 'Bring All to Front',
                     role:  'front'
-                },
-                {
-                    label:       'Toggle Developer Tools',
-                    accelerator: (function() {
-                        if (process.platform === 'darwin') {
-                            return 'Alt+Command+I';
-                        } else {
-                            return 'Ctrl+Shift+I';
-                        }
-                    })(),
-                    click: function(item, focusedWindow) {
-                        if (focusedWindow) {
-                            focusedWindow.webContents.toggleDevTools();
-                        }
-                    }
                 }
             );
         }
