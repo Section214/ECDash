@@ -27,27 +27,27 @@ class window {
      */
     createWindow() {
         // Load the index file into a new window
-        global.ecdash.window = new BrowserWindow({
+        global.ecdash.window.main = new BrowserWindow({
             width:       800,
             height:      600,
             title:       'ECDash',
             icon:        global.ecdash.path + '/assets/img/icon.png',
             skipTaskbar: true
         });
-        global.ecdash.window.loadURL('file://' + global.ecdash.path + '/index.html');
+        global.ecdash.window.main.loadURL('file://' + global.ecdash.path + '/index.html');
 
         // Dereference the window object on close
-        global.ecdash.window.on('closed', function() {
-            global.ecdash.window = null;
+        global.ecdash.window.main.on('closed', function() {
+            global.ecdash.window.main = null;
         });
 
         // Minimize to tray
-        global.ecdash.window.on('minimize', function() {
+        global.ecdash.window.main.on('minimize', function() {
             global.ecdash.app.dock.hide();
         });
 
         // Restore from tray
-        global.ecdash.window.on('restore', function() {
+        global.ecdash.window.main.on('restore', function() {
             global.ecdash.app.dock.show();
         });
     }

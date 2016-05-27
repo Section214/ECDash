@@ -39,6 +39,7 @@ jQuery(document).ready(function ($) {
 
     var menuContent = '';
     var menuClass;
+    var lastActive;
 
     for(var menu in menus.edd) {
         if(menus.edd[menu].type === 'spacer') {
@@ -97,6 +98,30 @@ jQuery(document).ready(function ($) {
             }
 
             setActive(activeItem);
+        }
+    });
+
+    $('body').on('click', '.footer .settings', function () {
+        lastActive = $('.menu li.active').attr('data-position');
+        $('.menu li.active').removeClass('active');
+        $('.footer .settings').addClass('active');
+
+        $('.content').fadeOut('fast', function() {
+            $('.content').load('./templates/settings.html', function() {
+                $('.content').fadeIn('fast');
+            });
+        });
+    });
+
+    $('body').on('click', '.settings .close', function() {
+        lastActive = parseInt(lastActive);
+        console.log(lastActive);
+        $('.footer .settings').removeClass('active');
+
+        for(var item in menus.edd) {
+            if(menus.edd[item].position === lastActive) {
+                setActive(lastActive);
+            }
         }
     });
 

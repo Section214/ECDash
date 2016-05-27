@@ -43,7 +43,8 @@ a {
     cursor: default;
 }
 
-.sidebar>.menu ul .active {
+.sidebar>.menu ul .active,
+.footer .active {
     background: #00BD52;
 }
 
@@ -174,4 +175,9 @@ a {
 
 .widget .inside .app-info .links ul li:last-child:after {
     content: "";
+}
+
+.widget .header .close {
+    float: right;
+    cursor: pointer;
 }
