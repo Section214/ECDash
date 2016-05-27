@@ -24,8 +24,13 @@ class tray {
         let appIcon     = null;
         let appIconMenu = null;
 
-        appIcon = new Tray(global.ecdash.path + '/assets/img/trayicon-dark.png');
-        appIcon.setPressedImage(global.ecdash.path + '/assets/img/trayicon-light.png');
+        // Determine appropriate icon
+        if (process.platform !== 'win32') {
+            appIcon = new Tray(global.ecdash.path + '/assets/img/iconTemplate.png');
+            appIcon.setPressedImage(global.ecdash.path + '/assets/img/iconHighlight.png');
+        } else {
+            appIcon = new Tray(global.ecdash.path + '/assets/img/tray.ico');
+        }
 
         appIconMenu = Menu.buildFromTemplate([
             {
